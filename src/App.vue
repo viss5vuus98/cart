@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div class="main">
-      <h3>結帳</h3>
       <div class="container">
+      <h3>結帳</h3>
       <StepArea />
       <router-view/>
       </div>

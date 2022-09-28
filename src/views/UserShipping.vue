@@ -33,7 +33,7 @@
         </div>
       </div>
     </form>
-    <CartPanel :shipPrice="shipFee"/>
+    <CartPanel :shipFee="shipFee"/>
     <BtnSection :btnUrl="{nextRoute, backRoute}" :delivery="delivery"/>
   </div>
 </template>

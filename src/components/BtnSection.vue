@@ -6,14 +6,15 @@
     >
     <button class="back-step" id="back-step">
       上一步
+      <img src="../../public/Defaults_leftback.png" alt="">
     </button>
     </router-link>
     <router-link :to="btnUrl.nextRoute" class="next">
     <button v-if="btnUrl.nextRoute !== ''" class="next-step" id="next-step">
-      下一步
+      下一步 <img src="../../public/arrownext.png" alt="">
     </button>
     <button v-else @click="checkout" class="next-step" id="next-step">
-      結帳
+       確認下單
     </button>
     </router-link>
     <modal name="my-first-modal">

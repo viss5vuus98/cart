@@ -204,7 +204,7 @@ body {
     z-index: 999;
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-gap: 30px;
+    grid-gap: 20px;
 
     .navbar-list {
       display: none;
@@ -245,18 +245,19 @@ body {
     font-size: 1.5rem;
     line-height: 38px;
     margin-bottom: 1.5rem;
-    margin-left: 10%;
   }
-
+  .container {
+    position: relative;
+  }
   .stepper-panel {
     width: 80%;
     margin: 0 auto;
     margin-bottom: 1.5rem;
-
+    position: absolute;
     .stepper-container {
       width: 100%;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       position: relative;
     }
 
@@ -274,8 +275,17 @@ body {
       &:nth-child(3) .circle-container::after {
         content: "3";
       }
+      .connect-line {
+        display: block;
+        height: 3px;
+        background-color: $main-gary;
+        position: absolute;
+        top: 50%;
+        transform: scaleY(-50%);
+        left: calc(25% + 70px );
+        right: calc(-25% + 70px );
+      }
     }
-
     .circle-container::after {
       color: $second-gary;
       vertical-align: sub;
@@ -289,15 +299,6 @@ body {
       margin: 0 auto;
     }
 
-    .connect-line {
-      display: block;
-      height: 3px;
-      position: absolute;
-      background-color: $main-gary;
-      top: 50%;
-      right: calc(50% - 120px);
-      left: calc(-50% + 180px);
-    }
 
     .active .connect-line {
       background-color: $text-black;
@@ -369,9 +370,9 @@ body {
   }
 
   .second-form {
-    width: 80%;
-    margin: 0 auto;
-    grid-column: 1 / 7;
+    width: 100%;
+    grid-column: 1 / 6;
+    grid-row: 2 / 3;
     h4 {
       font-size: 1.5rem;
     }
@@ -379,7 +380,7 @@ body {
     & .form-content {
       display: grid;
       grid-template: auto / 1fr;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       .radio-wrapper {
         grid-column: 1 / 2;
         border: 1px solid $cart-border;
@@ -548,8 +549,7 @@ body {
   }
 
   .btn-section {
-    width: 80%;
-    margin: 0 auto;
+    width: 100%;
     display: flex;
 
     button {
@@ -557,15 +557,31 @@ body {
       font-size: .8rem;
       padding: 11px 39px;
     }
-
     .next-step {
       background-color: $main-btn;
       border-radius: 8px;
+      text-align: start;
       position: relative;
+      img {
+        position: absolute;
+        right: 30%;
+        top: 30%;
+        transform: scaleY(-50%);
+        width: 25px;
+        height: 20px;
+      }
     }
 
     .back-step {
-      text-align: start;
+      text-align: end;
+      position: relative;
+      img {
+          position: absolute;
+          left: 3px;
+          top: 5px;
+          width: 30px;
+          height: 30px;
+        }
     }
   }
 }
@@ -578,24 +594,18 @@ body {
   .main {
     min-width: 800px;
     margin-top: 3rem;
-    h3 {
-      margin-left: 14.5%;
-    }
   }
 
   .container {
     width: 80%;
     margin: 0 auto;
     .stepper-panel {
-        grid-column: 1 / 8;
-        margin-bottom: 1rem;
         width: 50%;
-        margin-left: 0px;
         .stepper-container::before {
           // left: 25%;
           // width: 10%;
           // top: 50%;
-    
+          
           left: calc(50% - 20px);
         }
     
@@ -605,16 +615,23 @@ body {
           left: calc(50% - 130px);
           top: 50%;
         }
-    
+        .stepper-container {
+          justify-content: start;
+        }
         .step {
+          width: 100%;
           display: flex;
           gap: 8px;
           align-items: center;
           position: relative;
-    
+          .circle-container {
+            margin: 0;
+          }
           .label-container {
             display: block;
             font-size: 1rem;
+            // position: absolute;
+            // left: 20%;
           }
         }
       }
@@ -623,108 +640,118 @@ body {
     width: 100%;
     margin: 0 auto;
     display: grid;
-    grid-auto-columns: 1fr;
-    grid-template-rows: 100px .5fr 50px;
+    grid-template-rows: 4.5rem .5fr 50px;
     grid-auto-flow: column;
-    grid-gap: 50px 5%;
+    grid-gap: 1rem 5%;
     min-height: 100vh;
 
-
     .form-panel {
-      grid-column: 1 / 8;
-      grid-row: 1 / 2;
-
-      .first-form {
-        border-bottom: 1px solid #000;
-        margin-left: 2.5rem;
+      grid-column: 1 / 7;
+      grid-row: 2 / 3;
+      .form-container .first-form {
+        margin-left: 0;
+        width: 100%;
+        .form-content {
+          grid-template-columns: repeat(6, 1fr);
+          grid-gap: 0 30px;
+  
+          .first-row {
+            grid-column: 1 / 7;
+          }
+  
+          .second-row {
+            grid-column: 1 / 4;
+          }
+  
+          .third-row {
+            grid-column: 4 / 7;
+          }
+  
+          .fourth-row {
+            grid-column: 1 / 3;
+          }
+  
+          .fifth-reow {
+            grid-column: 3 / 7;
+          }
       }
 
-      &.form-content {
 
-        grid-template-columns: repeat(6, 1fr);
-        grid-gap: 0 30px;
-        display: none;
-
-        .first-row {
-          grid-column: 1 / 7;
-        }
-
-        .second-row {
-          grid-column: 1 / 4;
-        }
-
-        .third-row {
-          grid-column: 4 / 7;
-        }
-
-        .fourth-row {
-          grid-column: 1 / 3;
-        }
-
-        .fifth-row {
-          grid-column: 3 / 7;
-        }
       }
 
-      .second-form {
-        border-bottom: 1px solid $main-gary;
+    }
+    .second-form {
+      grid-column: 1 / 7;
+      width: 85%;
+      h4 {
+        margin-bottom: 1.5rem;
+      }
+    }
 
-        h4 {
+    .third-form {
+      margin: 0;
+      grid-row: 2 /3;
+      h4 {
+        margin-bottom: 1.5rem;
+      }
+
+      & .form-content {
+        & .form-row {
+          width: 85%;
           margin-bottom: 1.5rem;
         }
-      }
 
-      .third-form {
-        border-bottom: 1px solid $main-gary;
-
-        h4 {
-          margin-bottom: 1.5rem;
-        }
-
-        & .form-content {
-          & .form-row {
-            width: 350px;
-            margin-bottom: 1.5rem;
-          }
-
-          & .last {
-            width: 100%;
-          }
+        & .last {
+          width: 125%;
         }
       }
     }
 
     .cart-panel {
+      height: 492px;
       grid-column: 7 / 12;
       grid-row: 1 / 4;
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
-      gap: 2rem;
-      height: 120%;
-
+      margin-bottom: 0;
+      padding: 1.5rem 2rem;
       h4 {
         display: block;
+        margin-bottom: 2rem;
       }
-
+      .cart-list-wrapper{
+        .cart-item {
+          margin-bottom: 2rem;
+        }
+      }
       .delivery-charge,
       .total {
+        height: 37px;
         border-bottom: 0px;
+        padding-top: 1rem;
+      }
+      .delivery-charge {
+        margin-bottom: 2rem;
       }
     }
 
     .btn-section {
-      grid-column: 1 / 8;
+      grid-column: 1 / 7;
       display: grid;
-      grid-row: 4 / 5;
+      grid-row: 3 / 4;
       grid-template-columns: repeat(2, 1fr);
+      border-top: 1px solid #e6e6e6;
+      padding-top: 1.5rem;
       .next {
         grid-column: 2 / 3;
 
       }
       .next-step {
         float: right;
-        margin-right: 2rem;
+        width: 174px;
+        height: 45px;
+        color: #fff;
+        
       }
     }
   }
